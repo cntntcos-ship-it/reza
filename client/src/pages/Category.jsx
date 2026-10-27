@@ -71,7 +71,7 @@ export default function Category() {
                 alt={`کالکشن ${category.name}`}
                 width={1600}
                 height={800}
-                fetchPriority="high"
+                fetchpriority="high"
                 className="h-full w-full object-cover object-[50%_35%]"
               />
             ) : null}

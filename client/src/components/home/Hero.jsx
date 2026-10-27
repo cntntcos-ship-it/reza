@@ -41,7 +41,7 @@ export default function Hero() {
                 alt={site.hero.imageAlt}
                 width={1200}
                 height={1600}
-                fetchPriority="high"
+                fetchpriority="high"
                 decoding="async"
                 className="h-full w-full object-cover object-[50%_28%]"
               />

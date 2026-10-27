@@ -126,7 +126,7 @@ export default function Product() {
                 alt={`${product.name} — تصویر ${toFa(activeImage + 1)}`}
                 width={1000}
                 height={1250}
-                fetchPriority="high"
+                fetchpriority="high"
                 className="h-full w-full object-cover"
               />
             ) : null}
