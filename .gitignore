@@ -33,3 +33,12 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Node / Vite
+node_modules/
+dist/
+.vite/
+*.local
+.env
+.env.*
+!.env.base44-defaults

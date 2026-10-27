@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Design tokens ("Sand & Shadow") ---------- */
+:root {
+  --canvas: #faf8f5;
+  --surface: #ffffff;
+  --cream: #f0e9e1;
+  --beige: #d8c9b9;
+  --ink: #181715;
+  --muted: #77716a;
+  --line: #e8e2dc;
+  --onyx: #171717;
+  --clay: #a2553f;
+
+  --radius: 2px;
+  --header-height: 76px;
+  --section-gap: clamp(3.5rem, 6vw, 6rem);
+}
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    /* Persian script must not be letter-spaced; keep normal tracking everywhere. */
+    letter-spacing: normal;
+    line-height: 1.75;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold text-ink;
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Latin strings (emails, order numbers) keep their own direction. */
+  input[type='email'],
+  input[type='tel'],
+  .ltr {
+    direction: ltr;
+    text-align: left;
+  }
+
+  ::selection {
+    background: var(--beige);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--beige);
+    outline-offset: 2px;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-4 md:px-6 xl:px-8;
+  }
+
+  .section {
+    padding-block: var(--section-gap);
+  }
+
+  /* Eyebrow labels: small, spaced with a rule instead of letter-spacing. */
+  .eyebrow {
+    @apply flex items-center gap-2.5 text-xs font-medium text-muted;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply block h-px w-6 bg-beige;
+  }
+
+  .eyebrow-end::before {
+    @apply hidden;
+  }
+
+  .display {
+    font-size: clamp(1.75rem, 3.6vw, 3.25rem);
+    line-height: 1.28;
+    font-weight: 800;
+  }
+
+  .h1 {
+    font-size: clamp(1.6rem, 2.6vw, 2.35rem);
+    line-height: 1.35;
+    font-weight: 700;
+  }
+
+  .h2 {
+    font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+    line-height: 1.45;
+    font-weight: 700;
+  }
+
+  .lede {
+    @apply text-sm text-muted md:text-[15px];
+    line-height: 1.9;
+  }
+
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-soft
+      px-6 text-sm font-medium transition-colors duration-150 disabled:cursor-not-allowed
+      disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-onyx text-white hover:bg-[#2b2a27];
+  }
+
+  .btn-outline {
+    @apply border border-ink/25 bg-transparent text-ink hover:border-ink hover:bg-ink/[0.04];
+  }
+
+  .btn-light {
+    @apply border border-line bg-white text-ink hover:border-beige hover:bg-cream/60;
+  }
+
+  .btn-sm {
+    @apply min-h-9 px-4 text-[13px];
+  }
+
+  .link-quiet {
+    @apply text-muted underline-offset-4 transition-colors hover:text-ink hover:underline;
+  }
+
+  .field {
+    @apply min-h-11 w-full rounded-soft border border-line bg-white px-4 py-2.5 text-sm
+      text-ink transition-colors placeholder:text-muted/70 focus:border-beige
+      focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-beige/40;
+  }
+
+  .field-error {
+    @apply border-clay/60 focus:border-clay focus:ring-clay/20;
+  }
+
+  .label {
+    @apply mb-1.5 block text-[13px] font-medium text-ink;
+  }
+
+  .hint {
+    @apply mt-1.5 block text-xs text-muted;
+  }
+
+  .error-text {
+    @apply mt-1.5 flex items-start gap-1 text-xs text-clay;
+  }
+
+  .panel {
+    @apply rounded-soft border border-line bg-surface;
+  }
+
+  .chip {
+    @apply inline-flex min-h-9 items-center justify-center rounded-soft border border-line
+      bg-white px-3 text-[13px] text-ink transition-colors hover:border-beige
+      aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white;
+  }
+
+  .divider {
+    @apply h-px w-full bg-line;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .text-shadow-soft {
+    text-shadow: 0 1px 24px rgba(24, 23, 21, 0.35);
+  }
+
+  .fade-up {
+    animation: fadeUp 0.5s ease-out both;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
