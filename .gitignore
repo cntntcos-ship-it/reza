@@ -33,3 +33,12 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Node / Vite (LUNORA store)
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+
+# Local API data — seeded from api/src/seed.js on first boot
+api/data/

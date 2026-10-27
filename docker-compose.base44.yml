@@ -1,0 +1,84 @@
+# Base44 development environment for the LUNORA store.
+#
+# Both application services run FROM THE CLONED SOURCE with live-reload dev
+# servers (Vite + `node --watch`), so edits made in the editor appear in the
+# preview without rebuilding an image.
+#
+# Entry point: http://localhost:3000  (Vite dev server, proxies /api to `api`)
+
+name: lunora
+
+services:
+  api:
+    image: node:22-bookworm-slim
+    working_dir: /app
+    command: ["sh", "-ec", "npm install --no-audit --no-fund && exec npm run dev"]
+    volumes:
+      - ./api:/app
+    environment:
+      - NODE_ENV=development
+      - PORT=8000
+      - DATA_DIR=/app/data
+      # Sandbox flag only; the app behaves identically when it is unset.
+      - BASE44_PREVIEW_MODE
+    ports:
+      - "8000:8000"
+    restart: on-failure
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:8000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 45s
+    labels:
+      base44.project: LUNORA API
+      base44.kind: api
+      base44.port: "8000"
+      base44.docs: /api/health
+
+  web:
+    image: node:22-bookworm-slim
+    working_dir: /app
+    command:
+      [
+        "sh",
+        "-ec",
+        "npm install --no-audit --no-fund && exec npm run dev -- --host 0.0.0.0 --port 5173",
+      ]
+    volumes:
+      - ./web:/app
+    environment:
+      - NODE_ENV=development
+      # Reachable from the Vite dev server; the browser talks to /api on port 3000.
+      - VITE_API_PROXY=http://api:8000
+      # Supplied by the platform; Vite appends it to `server.allowedHosts`.
+      - __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
+      - BASE44_PREVIEW_MODE
+    ports:
+      - "3000:5173"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: on-failure
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:5173/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 60s
+    labels:
+      base44.project: LUNORA Store
+      base44.kind: web
+      base44.port: "3000"

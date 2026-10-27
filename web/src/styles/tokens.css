@@ -1,0 +1,96 @@
+/* ==========================================================================
+   LUNORA — design tokens
+   Every colour, size, radius, shadow and duration used in the UI is declared
+   here so the whole store can be re-skinned from one file.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Palette ------------------------------------------------------------- */
+  --bg: #faf8f5;
+  --surface: #ffffff;
+  --cream: #f1ebe4;
+  --beige: #e5d9cc;
+  --ink: #191817;
+  --ink-soft: #77716b;
+  --ink-mute: #a29a92;
+  --line: #e8e2dc;
+  --line-strong: #d9d1c8;
+  --footer-bg: #171615;
+  --footer-ink: #f7f4ef;
+  --footer-ink-soft: rgba(247, 244, 239, 0.64);
+  --accent: #9c7b5c;
+  --accent-soft: rgba(156, 123, 92, 0.12);
+  --sale: #8c4a3c;
+  --success: #47695a;
+
+  /* Typography ---------------------------------------------------------- */
+  /* IRANYekan is used when the licensed webfont is installed or dropped into
+     web/public/fonts (see that folder's README). Until then Vazirmatn — a
+     metric-close, open-licensed Persian face bundled with the app — takes over,
+     so no request ever points at a font file that does not exist. */
+  --font-fa: 'IRANYekan', 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+  --font-latin: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
+
+  --fs-hero: clamp(2rem, 1.1rem + 4vw, 4.25rem);
+  --fs-h2: clamp(1.5rem, 1.15rem + 1.3vw, 2.375rem);
+  --fs-h3: clamp(1.0625rem, 0.95rem + 0.45vw, 1.375rem);
+  --fs-card: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+  --fs-body: clamp(0.9375rem, 0.9rem + 0.16vw, 1rem);
+  --fs-small: 0.8125rem;
+  --fs-label: 0.6875rem;
+
+  --lh-tight: 1.32;
+  --lh-body: 1.9;
+  --tracking-label: 0.16em;
+
+  /* Spacing ------------------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  --section-y: clamp(3.25rem, 2rem + 5vw, 6.5rem);
+  --gutter: clamp(1rem, 0.4rem + 3vw, 3rem);
+  --container: 1340px;
+
+  /* Radii --------------------------------------------------------------- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+
+  /* Elevation ----------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(25, 24, 23, 0.05);
+  --shadow-sm: 0 2px 8px rgba(25, 24, 23, 0.05);
+  --shadow-md: 0 18px 40px -28px rgba(25, 24, 23, 0.35);
+  --shadow-lg: 0 34px 70px -40px rgba(25, 24, 23, 0.45);
+
+  /* Motion -------------------------------------------------------------- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-1: 160ms;
+  --dur-2: 260ms;
+  --dur-3: 420ms;
+
+  /* Layout / layers ----------------------------------------------------- */
+  --header-h: 76px;
+  --z-header: 40;
+  --z-backdrop: 55;
+  --z-drawer: 60;
+  --z-toast: 90;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --header-h: 64px;
+  }
+}

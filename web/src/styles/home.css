@@ -1,0 +1,543 @@
+/* ==========================================================================
+   LUNORA — home page sections
+   ========================================================================== */
+
+/* Hero ------------------------------------------------------------------- */
+
+.hero {
+  padding-block: clamp(1.25rem, 1rem + 1.5vw, 2.5rem) clamp(2rem, 1.5rem + 2vw, 3.25rem);
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.02fr 1fr;
+  gap: clamp(1.5rem, 1rem + 3vw, 4rem);
+  align-items: stretch;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+  padding-block: clamp(0.5rem, 1.5vw, 2.5rem);
+}
+
+.hero__label {
+  font-size: var(--fs-label);
+  letter-spacing: 0.22em;
+  color: var(--ink-soft);
+}
+
+.hero__title {
+  font-size: var(--fs-hero);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  max-width: 13ch;
+}
+
+.hero__text {
+  max-width: 46ch;
+  color: var(--ink-soft);
+  font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+  line-height: 1.95;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-block-start: var(--space-2);
+}
+
+.hero__actions .btn {
+  min-height: 3.15rem;
+  padding-inline: 1.9rem;
+}
+
+.hero__benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-block-start: clamp(1.25rem, 1rem + 1.5vw, 2.5rem);
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--line);
+}
+
+.hero__benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: var(--ink-soft);
+}
+
+.hero__benefits svg {
+  flex: none;
+  margin-block-start: 2px;
+  color: var(--accent);
+}
+
+.hero__benefit-title {
+  display: block;
+  font-size: var(--fs-small);
+  color: var(--ink);
+}
+
+.hero__benefit-text {
+  display: block;
+  margin-block-start: 0.15rem;
+  font-size: var(--fs-label);
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.hero__media {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(420px, 62vh, 720px);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--dur-3) var(--ease);
+}
+
+.hero__image.is-active {
+  opacity: 1;
+}
+
+.hero__indicator {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: 0;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.85rem 0.5rem;
+  background: rgba(250, 248, 245, 0.86);
+  border-start-start-radius: var(--radius-sm);
+  border-end-start-radius: var(--radius-sm);
+}
+
+.hero__dot {
+  font-family: var(--font-latin);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+  padding: 0.1rem 0.2rem;
+  transition: color var(--dur-1) var(--ease);
+}
+
+.hero__dot:hover {
+  color: var(--ink-soft);
+}
+
+.hero__dot.is-active {
+  color: var(--ink);
+}
+
+.hero__trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-block-start: var(--space-4);
+  font-size: var(--fs-label);
+  color: var(--ink-mute);
+}
+
+.hero__trust svg {
+  color: var(--accent);
+}
+
+/* Category circles ------------------------------------------------------- */
+
+.circles {
+  padding-block: clamp(1.5rem, 1.1rem + 1.8vw, 2.75rem);
+  border-block-end: 1px solid var(--line);
+}
+
+.circles__list {
+  display: flex;
+  gap: clamp(0.9rem, 1.6vw, 2.25rem);
+  overflow-x: auto;
+  padding-block: 0.25rem 0.6rem;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.circles__list::-webkit-scrollbar {
+  display: none;
+}
+
+.circles__item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.circle-card {
+  display: grid;
+  justify-items: center;
+  gap: 0.65rem;
+  width: clamp(84px, 8.5vw, 110px);
+}
+
+.circle-card__media {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--cream);
+}
+
+.circle-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-3) var(--ease);
+}
+
+.circle-card:hover .circle-card__media img {
+  transform: scale(1.06);
+}
+
+.circle-card__name {
+  font-size: var(--fs-small);
+  text-align: center;
+  color: var(--ink);
+}
+
+/* Featured categories ---------------------------------------------------- */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.7rem, 1.1vw, 1.25rem);
+}
+
+.category-card {
+  position: relative;
+  display: block;
+  height: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--footer-ink);
+}
+
+.category-card__media {
+  position: absolute;
+  inset: 0;
+}
+
+.category-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--ease);
+}
+
+.category-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(23, 22, 21, 0.58) 0%,
+    rgba(23, 22, 21, 0.16) 42%,
+    rgba(23, 22, 21, 0) 68%
+  );
+}
+
+.category-card__body {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 1;
+  display: grid;
+  gap: 0.3rem;
+  padding: clamp(0.9rem, 1.3vw, 1.5rem);
+}
+
+.category-card__title {
+  font-size: var(--fs-card);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.category-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-label);
+  opacity: 0.85;
+  transition: gap var(--dur-2) var(--ease), opacity var(--dur-2) var(--ease);
+}
+
+.category-card:hover .category-card__media img {
+  transform: scale(1.04);
+}
+
+.category-card:hover .category-card__cta {
+  gap: 0.65rem;
+  opacity: 1;
+}
+
+/* Promotional banners ---------------------------------------------------- */
+
+.banners {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.7rem, 1.1vw, 1.25rem);
+}
+
+.promo-banner {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--footer-ink);
+}
+
+.promo-banner__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--ease);
+}
+
+.promo-banner__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to left,
+    rgba(23, 22, 21, 0.66) 0%,
+    rgba(23, 22, 21, 0.28) 52%,
+    rgba(23, 22, 21, 0.08) 100%
+  );
+}
+
+.promo-banner__body {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  gap: 0.4rem;
+  max-width: 26rem;
+  padding: clamp(1rem, 2vw, 2.5rem);
+}
+
+.promo-banner__label {
+  font-size: var(--fs-label);
+  letter-spacing: 0.18em;
+  opacity: 0.85;
+}
+
+.promo-banner__title {
+  font-size: clamp(1.125rem, 1rem + 0.9vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.promo-banner__text {
+  font-size: var(--fs-small);
+  opacity: 0.86;
+}
+
+.promo-banner__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  margin-block-start: 0.55rem;
+  padding-block-end: 2px;
+  font-size: var(--fs-small);
+  border-block-end: 1px solid rgba(247, 244, 239, 0.5);
+  transition: gap var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+}
+
+.promo-banner:hover .promo-banner__image {
+  transform: scale(1.04);
+}
+
+.promo-banner:hover .promo-banner__cta {
+  gap: 0.7rem;
+  border-color: var(--footer-ink);
+}
+
+/* Benefits strip --------------------------------------------------------- */
+
+.benefits {
+  padding-block: clamp(1.4rem, 1rem + 1.8vw, 2.4rem);
+  background: var(--cream);
+  border-block: 1px solid var(--line);
+}
+
+.benefits__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.benefits__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.benefits__item svg {
+  flex: none;
+  margin-block-start: 2px;
+  color: var(--accent);
+}
+
+.benefits__item + .benefits__item {
+  padding-inline-start: var(--space-5);
+  border-inline-start: 1px solid var(--line-strong);
+}
+
+.benefits__text {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.benefits__title {
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+.benefits__desc {
+  font-size: var(--fs-label);
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* Newsletter banner ------------------------------------------------------ */
+
+.newsletter {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.newsletter__media {
+  position: relative;
+  min-height: 320px;
+  background: var(--cream);
+}
+
+.newsletter__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.newsletter__body {
+  display: grid;
+  align-content: center;
+  gap: var(--space-3);
+  padding: clamp(1.5rem, 1rem + 3vw, 3.5rem);
+}
+
+.newsletter__title {
+  font-size: var(--fs-h2);
+  letter-spacing: -0.015em;
+}
+
+.newsletter__text {
+  max-width: 42ch;
+  color: var(--ink-soft);
+}
+
+.newsletter__note {
+  font-size: var(--fs-label);
+  line-height: 1.8;
+  color: var(--ink-mute);
+}
+
+/* Responsive ------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__title {
+    max-width: 16ch;
+  }
+
+  .hero__media {
+    min-height: clamp(360px, 58vw, 540px);
+  }
+}
+
+@media (max-width: 900px) {
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .banners {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--space-5);
+  }
+
+  .benefits__item + .benefits__item {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
+
+  .newsletter {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter__media {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero__benefits {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .hero__benefits li {
+    align-items: center;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 auto;
+  }
+
+  .category-grid {
+    gap: 0.6rem;
+  }
+
+  .promo-banner {
+    aspect-ratio: 4 / 3;
+  }
+}

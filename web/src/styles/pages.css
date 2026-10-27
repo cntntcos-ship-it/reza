@@ -1,0 +1,170 @@
+/* ==========================================================================
+   LUNORA — content pages, contact, FAQ, 404
+   ========================================================================== */
+
+.prose {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 70ch;
+  line-height: 1.95;
+}
+
+.prose h2 {
+  margin-block-start: var(--space-6);
+  font-size: var(--fs-h3);
+}
+
+.prose p,
+.prose li {
+  color: var(--ink-soft);
+}
+
+.prose ul {
+  display: grid;
+  gap: 0.45rem;
+  padding-inline-start: 1.2rem;
+  list-style: disc;
+}
+
+.prose strong {
+  color: var(--ink);
+}
+
+.prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose__note {
+  margin-block-start: var(--space-6);
+  padding: var(--space-4);
+  background: var(--cream);
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+
+.about-hero {
+  margin-block: var(--space-4) var(--space-6);
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+}
+
+.about-hero img {
+  width: 100%;
+  height: clamp(220px, 38vw, 420px);
+  object-fit: cover;
+}
+
+/* Contact ---------------------------------------------------------------- */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 2.5vw, 3rem);
+  align-items: start;
+}
+
+.contact-form {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.contact-aside {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--cream);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  line-height: 1.95;
+  color: var(--ink-soft);
+}
+
+.contact-aside__title {
+  font-size: var(--fs-h3);
+  color: var(--ink);
+}
+
+.contact-aside a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-aside__note {
+  font-size: var(--fs-label);
+  color: var(--ink-mute);
+}
+
+.form-feedback {
+  min-height: 1.2rem;
+  font-size: var(--fs-small);
+  color: var(--success);
+}
+
+.form-feedback.is-error {
+  color: var(--sale);
+}
+
+/* FAQ -------------------------------------------------------------------- */
+
+.faq-section {
+  margin-block-end: var(--space-8);
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+.faq-section__title {
+  margin-block-end: var(--space-3);
+  font-size: var(--fs-h3);
+}
+
+/* 404 -------------------------------------------------------------------- */
+
+.page--notfound {
+  display: grid;
+  place-items: center;
+  min-height: 62vh;
+  text-align: center;
+  padding-block: var(--space-12);
+}
+
+.notfound__code {
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--beige);
+}
+
+.notfound__title {
+  margin-block: var(--space-3) var(--space-2);
+  font-size: var(--fs-h2);
+}
+
+.notfound__text {
+  max-width: 44ch;
+  margin-inline: auto;
+  color: var(--ink-soft);
+}
+
+.notfound__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-block-start: var(--space-6);
+}
+
+/* Responsive ------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
